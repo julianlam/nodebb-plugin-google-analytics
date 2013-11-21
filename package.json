@@ -1,0 +1,24 @@
+{
+  "name": "nodebb-plugin-google-analytics",
+  "version": "0.1.0",
+  "description": "Google Analytics for NodeBB",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/julianlam/nodebb-plugin-google-analytics"
+  },
+  "keywords": [
+    "nodebb",
+    "google",
+    "analytics"
+  ],
+  "author": "Julian Lam <julian@designcreateplay.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/julianlam/nodebb-plugin-google-analytics/issues"
+  },
+  "dependencies": {
+    "path": "~0.4.9",
+    "ga": "0.0.2"
+  }
+}

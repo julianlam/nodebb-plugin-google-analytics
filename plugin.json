@@ -1,0 +1,13 @@
+{
+    "id": "nodebb-plugin-google-analytics",
+    "name": "Google Analytics",
+    "description": "Google Analytics for NodeBB",
+    "url": "https://github.com/julianlam/nodebb-plugin-google-analytics",
+    "library": "./index.js",
+    "hooks": [
+        { "hook": "filter:footer.build", "method": "addTrackingScript", "callbacked": true },
+        { "hook": "action:page.load", "method": "recordPageView" },
+        { "hook": "filter:admin.header.build", "method": "admin.menu", "callbacked": false },
+        { "hook": "filter:admin.create_routes", "method": "admin.route", "callbacked": true }
+    ]
+}
