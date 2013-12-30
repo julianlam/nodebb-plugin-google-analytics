@@ -1,7 +1,7 @@
 var	fs = require('fs'),
 	path = require('path'),
 
-	RDB = module.parent.require('./redis'),
+	db = module.parent.require('./database'),
 
 	GoogleAnalytics = require('ga'),
 
@@ -12,11 +12,11 @@ GA.serverGA = undefined;
 GA.init = function(callback) {
 	if (GA.serverGA !== undefined) return callback();
 
-	RDB.hmget('config', ['ga:id', 'ga:domain'], function(err, options) {
-		if (!err && options[0] && options[1]) {
-			GA.serverGA = new GoogleAnalytics(options[0], options[1]);
-			GA.id = options[0];
-			GA.domain = options[1];
+	db.getObjectFields('config', ['ga:id', 'ga:domain'], function(err, options) {
+		if (!err && options['ga:id'] && options['ga:domain']) {
+			GA.serverGA = new GoogleAnalytics(options['ga:id'], options['ga:domain']);
+			GA.id = options['ga:id'];
+			GA.domain = options['ga:domain'];
 
 			callback();
 		} else {
