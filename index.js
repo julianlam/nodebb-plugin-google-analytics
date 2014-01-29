@@ -1,26 +1,23 @@
 var	fs = require('fs'),
 	path = require('path'),
 
+	winston = module.parent.require('winston'),
+
 	db = module.parent.require('./database'),
 
-	GoogleAnalytics = require('ga'),
-
 	GA = {};
-
-GA.serverGA = undefined;
 
 GA.init = function(callback) {
 	if (GA.serverGA !== undefined) return callback();
 
 	db.getObjectFields('config', ['ga:id', 'ga:domain'], function(err, options) {
-		if (!err && options['ga:id'] && options['ga:domain']) {
-			GA.serverGA = new GoogleAnalytics(options['ga:id'], options['ga:domain']);
+		if (!err && options['ga:id']/* && options['ga:domain']*/) {
 			GA.id = options['ga:id'];
-			GA.domain = options['ga:domain'];
+			// GA.domain = options['ga:domain'];
 
 			callback();
 		} else {
-			callback(new Error('invalid-id-or-domain'));
+			callback(new Error('A Google Analytics ID (e.g. UA-XXXXX-X) was not specified.'));
 		}
 	});
 }
@@ -29,35 +26,38 @@ GA.addTrackingScript = function(appendHTML, callback) {
 	GA.init(function(err) {
 		if (!err) {
 			appendHTML += "\
-				\n\t\t<script>\
-					\n\t\t\t(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\
-					\n\t\t\t(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\
-					\n\t\t\tm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\
-					\n\t\t\t})(window,document,'script','//www.google-analytics.com/analytics.js','ga');\
-					\n\t\t\tga('create', '" + GA.id + "', '" + GA.domain + "');\
-					\n\t\t\tga('send', 'pageview');\
-				\n\t\t</script>\n";
+				<script type=\"text/javascript\"> \
+					var _gaq = _gaq || []; \
+					_gaq.push(['_setAccount', '" + GA.id + "']); \
+					_gaq.push(['_trackPageview']); \
+					\
+					(function() { \
+					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; \
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; \
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); \
+					})(); \
+				</script> \
+			";
 
 			callback(err, appendHTML);
 		} else {
+			winston.error(err.message);
 			callback(err, appendHTML);
 		}
 	});
 };
 
-GA.recordPageView = function(data) {
-	GA.init(function(err) {
-		if (!err) {
-			GA.serverGA.trackPage(data.url, data.uid);
-		}
-	});
+GA.loadScript = function(scripts) {
+	return scripts.concat([
+		'plugins/nodebb-plugin-google-analytics/listener.js'
+	]);
 };
 
 GA.admin = {
 	menu: function(custom_header, callback) {
 		custom_header.plugins.push({
 			"route": '/plugins/google-analytics',
-			"icon": 'icon-bar-chart',
+			"icon": 'fa-bar-chart-o',
 			"name": 'Google Analytics'
 		});
 

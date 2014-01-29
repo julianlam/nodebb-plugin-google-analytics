@@ -1,4 +1,4 @@
-<h1><i class="icon-bar-chart"></i> Google Analytics</h1>
+<h1><i class="fa fa-bar-chart-o"></i> Google Analytics</h1>
 
 <div class="alert alert-info">
 	<p>
@@ -17,10 +17,6 @@
 		<div class="form-group">
 			<label for="ga:id">Tracking ID</label>
 			<input type="text" class="form-control" id="ga:id" data-field="ga:id" placeholder="UA-XXXXXXXX-X" />
-		</div>
-		<div class="form-group">
-			<label for="ga:domain">Domain</label>
-			<input type="text" class="form-control" id="ga:domain" data-field="ga:domain" placeholder="example.org" />
 		</div>
 
 		<button class="btn btn-lg btn-primary" id="save">Save</button>
