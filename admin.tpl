@@ -5,7 +5,7 @@
 		The Google Analytics NodeBB plugin uses Universal Analytics. To begin, create an account <a href="https://www.google.com/analytics/"><strong>here</strong></a>.
 	</p>
 	<p>
-		Once you have an account, paste your tracking ID and domain into the two fields below, and restart your NodeBB.
+		Once you have an account, paste your tracking ID into the field below, and restart your NodeBB.
 	</p>
 	<p>
 		For more information, please consult the <a href="https://support.google.com/analytics/?hl=en#topic=3544906"><strong>Google Analytics Help Center</strong></a>
