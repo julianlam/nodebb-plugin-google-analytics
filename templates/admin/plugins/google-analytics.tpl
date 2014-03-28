@@ -12,19 +12,25 @@
 	</p>
 </div>
 
-<form role="form">
+<form role="form" class="ga-settings">
 	<fieldset>
 		<div class="form-group">
-			<label for="ga:id">Tracking ID</label>
-			<input type="text" class="form-control" id="ga:id" data-field="ga:id" placeholder="UA-XXXXXXXX-X" />
+			<label for="id">Tracking ID</label>
+			<input type="text" class="form-control" id="id" name="id" placeholder="UA-XXXXXXXX-X" />
 		</div>
 
-		<button class="btn btn-lg btn-primary" id="save">Save</button>
+		<button class="btn btn-lg btn-primary" id="save" type="button">Save</button>
 	</fieldset>
 </form>
 
 <script type="text/javascript">
-	require(['forum/admin/settings'], function(Settings) {
-		Settings.prepare();
+	require(['settings'], function(Settings) {
+		Settings.load('google-analytics', $('.ga-settings'));
+
+		$('#save').on('click', function() {
+			Settings.save('google-analytics', $('.ga-settings'), function() {
+				socket.emit('admin.restart');
+			});
+		});
 	});
 </script>
