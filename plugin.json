@@ -13,5 +13,6 @@
         { "hook": "action:app.load", "method": "init" },
         { "hook": "filter:scripts.get", "method": "loadScript" },
         { "hook": "filter:admin.header.build", "method": "admin.menu" }
-    ]
+    ],
+    "minver": "0.4.0"
 }
