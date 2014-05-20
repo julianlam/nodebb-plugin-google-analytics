@@ -27,12 +27,6 @@ GA.init = function(app, middleware, controllers) {
 	});
 };
 
-GA.loadScript = function(scripts) {
-	return scripts.concat([
-		'plugins/nodebb-plugin-google-analytics/listener.js'
-	]);
-};
-
 GA.admin = {
 	menu: function(custom_header, callback) {
 		custom_header.plugins.push({
