@@ -29,7 +29,15 @@
 
 		$('#save').on('click', function() {
 			Settings.save('google-analytics', $('.ga-settings'), function() {
-				socket.emit('admin.restart');
+				app.alert({
+					type: 'success',
+					alert_id: 'ga-saved',
+					title: 'Restart Required',
+					message: 'Please restart your NodeBB to complete configuration of this plugin',
+					clickfn: function() {
+						socket.emit('admin.restart');
+					}
+				});
 			});
 		});
 	});
