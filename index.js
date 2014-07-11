@@ -6,7 +6,9 @@ var	fs = require('fs'),
 
 	db = module.parent.require('./database'),
 
-	GA = {};
+	GA = {
+		assetId: undefined
+	};
 
 GA.init = function(app, middleware, controllers) {
 	function render(req, res, next) {
@@ -15,14 +17,20 @@ GA.init = function(app, middleware, controllers) {
 
 	app.get('/admin/plugins/google-analytics', middleware.admin.buildHeader, render);
 	app.get('/api/admin/plugins/google-analytics', render);
-
-	Meta.settings.getOne('google-analytics', 'id', function(err, assetId) {
-		if (!err && assetId) {
-			app.get('/api/plugins/google-analytics', function(req, res) {
-				res.send(200, assetId);
-			});
+	app.get('/api/plugins/google-analytics', function(req, res) {
+		if (GA.assetId) {
+			res.send(200, GA.assetId);
 		} else {
-			winston.error('A Google Analytics ID (e.g. UA-XXXXX-X) was not specified.');
+			res.send(501);
+		}
+	});
+
+	// Load asset ID from config
+	Meta.settings.getOne('google-analytics', 'id', function(err, assetId) {
+		if (!err && assetId && assetId.length) {
+			GA.assetId = assetId;
+		} else {
+			winston.error('A Google Analytics ID (e.g. UA-XXXXX-X) was not specified. Please complete setup in the administration panel.');
 		}
 	});
 };
