@@ -63,7 +63,6 @@ GA.getNotices = function(notices, callback) {
 		doneText: 'Google Analytics OK',
 		notDoneText: 'Google Analytics needs setup'
 	});
-	console.log(notices);
 
 	callback(null, notices);
 }
