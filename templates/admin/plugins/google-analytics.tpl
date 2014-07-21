@@ -18,6 +18,11 @@
 			<label for="id">Tracking ID</label>
 			<input type="text" class="form-control" id="id" name="id" placeholder="UA-XXXXXXXX-X" />
 		</div>
+		<div class="checkbox">
+			<label id="displayFeatures">
+				<input type="checkbox" name="displayFeatures" id="displayFeatures" /> Enable Display Advertising Features (<a href="https://support.google.com/analytics/answer/3450482?hl=en">More Information</a>)
+			</label>
+		</div>
 
 		<button class="btn btn-lg btn-primary" id="save" type="button">Save</button>
 	</fieldset>
@@ -32,11 +37,7 @@
 				app.alert({
 					type: 'success',
 					alert_id: 'ga-saved',
-					title: 'Restart Required',
-					message: 'Please restart your NodeBB to complete configuration of this plugin',
-					clickfn: function() {
-						socket.emit('admin.restart');
-					}
+					title: 'Settings Saved'
 				});
 			});
 		});
