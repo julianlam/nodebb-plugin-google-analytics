@@ -9,7 +9,7 @@
         "lib/client.js"
     ],
     "hooks": [
-        { "hook": "filter:app.load", "method": "init" },
+        { "hook": "static:app.load", "method": "init" },
         { "hook": "filter:admin.header.build", "method": "routeMenu" },
         { "hook": "action:settings.set", "method": "onConfigChange" },
         { "hook": "filter:admin.notices", "method": "getNotices"}
