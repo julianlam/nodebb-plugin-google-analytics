@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-google-analytics",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Google Analytics for NodeBB",
   "main": "index.js",
   "repository": {
