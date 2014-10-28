@@ -19,7 +19,7 @@ GA.init = function(app, middleware, controllers, callback) {
 	app.get('/api/admin/plugins/google-analytics', render);
 	app.get('/api/plugins/google-analytics', function(req, res) {
 		if (GA.settings) {
-			res.json(200, GA.settings);
+			res.status(200).json(GA.settings);
 		} else {
 			res.send(501);
 		}
