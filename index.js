@@ -10,14 +10,14 @@ var	fs = require('fs'),
 		settings: {}
 	};
 
-GA.init = function(app, middleware, controllers, callback) {
+GA.init = function(data, callback) {
 	function render(req, res, next) {
 		res.render('admin/plugins/google-analytics', {});
 	}
 
-	app.get('/admin/plugins/google-analytics', middleware.admin.buildHeader, render);
-	app.get('/api/admin/plugins/google-analytics', render);
-	app.get('/api/plugins/google-analytics', function(req, res) {
+	data.app.get('/admin/plugins/google-analytics', data.middleware.admin.buildHeader, render);
+	data.app.get('/api/admin/plugins/google-analytics', render);
+	data.app.get('/api/plugins/google-analytics', function(req, res) {
 		if (GA.settings) {
 			res.status(200).json(GA.settings);
 		} else {
