@@ -19,5 +19,8 @@
   },
   "dependencies": {
     "path": "~0.4.9"
+  },
+  "nbbpm": {
+    "compatibility": "^0.5.0"
   }
 }
