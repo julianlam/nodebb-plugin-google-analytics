@@ -8,9 +8,9 @@ This plugin requires NodeBB v0.1.1 or greater, due to hooks added during that re
 
 ## Installation
 
-1. Create a Google Analytics account ([here](https://www.google.com/analytics)), and create a new app in order to receive a `UA-` number. This is your tracking ID.
+1. Create a Google Analytics account ([here](https://www.google.com/analytics/web), and create a new app in order to receive a `UA-` number. This is your tracking ID.
 1. Install the plugin: `npm install nodebb-plugin-google-analytics`
 
-1. Activate the plugin in the administration panel, and restart your NodeBB
+1. Activate the plugin in the administration panel, and restart your NodeBB forum.
 1. Navigate to the Google Analytics settings page `/admin/plugins/google-analytics`, and save your tracking ID and domain, as specified in step 1.
-1. Restart your NodeBB, and verify that the tracking code appears at the bottom of the page source.
+1. Go to the Google Analytics dashboard's "Real-Time" page and verify that your movement across pages is shown.
