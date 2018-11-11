@@ -1,14 +1,14 @@
-var	fs = require('fs'),
-	path = require('path'),
+var fs = require('fs');
+var path = require('path');
 
-	winston = module.parent.require('winston'),
-	Meta = module.parent.require('./meta'),
+var winston = require.main.require('winston');
+var Meta = require.main.require('./src/meta');
 
-	db = module.parent.require('./database'),
+var db = require.main.require('./src/database');
 
-	GA = {
-		settings: {}
-	};
+var GA = {
+	settings: {}
+};
 
 GA.init = function(data, callback) {
 	function render(req, res, next) {
