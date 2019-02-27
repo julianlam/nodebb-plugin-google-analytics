@@ -19,6 +19,11 @@ GA.init = function(data, callback) {
 	data.router.get('/api/admin/plugins/google-analytics', render);
 	data.router.get('/api/plugins/google-analytics', function(req, res) {
 		if (GA.settings) {
+			if (GA.settings.enableUserId == 'off' || !req.isAuthenticated || !req.isAuthenticated()){
+				GA.settings.uid = null;
+			} else {
+				GA.settings.uid = req.uid;
+			}
 			res.status(200).json(GA.settings);
 		} else {
 			res.send(501);
