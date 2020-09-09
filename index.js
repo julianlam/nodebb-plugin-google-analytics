@@ -17,18 +17,16 @@ GA.init = function(data, callback) {
 
 	data.router.get('/admin/plugins/google-analytics', data.middleware.admin.buildHeader, render);
 	data.router.get('/api/admin/plugins/google-analytics', render);
-	data.router.get('/api/plugins/google-analytics', function(req, res) {
-		if (GA.settings) {
-			res.status(200).json(GA.settings);
-		} else {
-			res.send(501);
-		}
-	});
 
 	// Load asset ID from config
 	GA.loadSettings();
 
 	callback();
+};
+
+GA.filterConfigGet = async function (config) {
+	config['google-analytics'] = GA.settings;
+	return config;
 };
 
 GA.loadSettings = function() {

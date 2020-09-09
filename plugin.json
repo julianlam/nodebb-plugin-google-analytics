@@ -10,6 +10,7 @@
     ],
     "hooks": [
         { "hook": "static:app.load", "method": "init" },
+        { "hook": "filter:config.get", "method": "filterConfigGet" },
         { "hook": "filter:admin.header.build", "method": "routeMenu" },
         { "hook": "action:settings.set", "method": "onConfigChange" },
         { "hook": "filter:admin.notices", "method": "getNotices"}
