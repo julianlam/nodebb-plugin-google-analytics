@@ -31,8 +31,10 @@ plugin.addAdminNavigation = async (header) => {
 };
 
 plugin.getNotices = async (notices) => {
+	const settings = await meta.settings.get(PLUGIN_NAME);
+	const gaId = settings.useUA === 'on' ? settings.id : settings.ga4id;
 	notices.push({
-		done: plugin.settings.id !== undefined && plugin.settings.id.length > 0,
+		done: gaId !== undefined && gaId.length > 0,
 		doneText: 'Google Analytics OK',
 		notDoneText: 'Google Analytics needs setup',
 		link: '/admin/plugins/google-analytics',
