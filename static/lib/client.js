@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	const gaConfig = config['google-analytics'];
 	if (gaConfig && (gaConfig.id || gaConfig.ga4id)) {
-		if (gaConfig.useUA === 'on') {
+		if ((gaConfig.useUA === undefined && gaConfig.id) || gaConfig.useUA === 'on') {
 			// GA Snippet
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
