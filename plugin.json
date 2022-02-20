@@ -14,8 +14,8 @@
     "scripts": [
         "static/lib/client.js"
     ],
-    "acpScripts": [
-        "static/lib/admin.js"
-    ],
+    "modules": {
+        "../admin/plugins/google-analytics.js": "static/lib/admin.js"
+    },
     "templates": "static/templates"
 }
