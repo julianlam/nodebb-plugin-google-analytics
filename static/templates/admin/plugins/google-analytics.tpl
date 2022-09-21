@@ -1,5 +1,3 @@
-<h1><i class="fa fa-bar-chart-o"></i> Google Analytics</h1>
-
 <div class="alert alert-info">
 	<p>
 		If you don't have a Google Analytics account, you can create one <a href="https://www.google.com/analytics/"><strong>here</strong></a>.
@@ -13,7 +11,7 @@
 </div>
 
 <form role="form" class="google-analytics-settings">
-	<div class="form-group">
+	<div class="mb-3">
 		<div class="checkbox">
 			<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
 				<input class="mdl-switch__input" type="checkbox" name="useUA" id="useUA" disabled{{{ if useUA }}} checked{{{ end }}}>
@@ -23,14 +21,14 @@
 	</div>
 
 	<fieldset id="ga4-con"{{{ if useUA }}} style="display: none;"{{{ end }}}>
-		<div class="form-group">
+		<div class="mb-3">
 			<label for="ga4id">Tracking ID (Google Analytics 4)</label>
 			<input type="text" class="form-control" id="ga4id" name="ga4id" placeholder="G-XXXXXXXXXX">
 		</div>
 	</fieldset>
 
 	<fieldset id="ua-con"{{{ if !useUA }}} style="display: none;"{{{ end }}}>
-		<div class="form-group">
+		<div class="mb-3">
 			<label for="id">Tracking ID (Universal Analytics)</label>
 			<input type="text" class="form-control" id="id" name="id" placeholder="UA-XXXXXXXX-X">
 		</div>
