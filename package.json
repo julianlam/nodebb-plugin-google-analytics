@@ -18,6 +18,6 @@
     "url": "https://github.com/julianlam/nodebb-plugin-google-analytics/issues"
   },
   "nbbpm": {
-    "compatibility": "^1.17.0 || ^2.0.0"
+    "compatibility": "^2.0.1"
   }
 }
