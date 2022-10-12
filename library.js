@@ -10,10 +10,10 @@ const plugin = {
 };
 
 plugin.init = async function(params) {
-	const { middleware, router } = params;
+	const { router } = params;
 	const routeHelpers = require.main.require('./src/routes/helpers');
 
-	routeHelpers.setupAdminPageRoute(router, `/admin/plugins/${PLUGIN_NAME}`, middleware, [], controllers.renderAdminPage);
+	routeHelpers.setupAdminPageRoute(router, `/admin/plugins/${PLUGIN_NAME}`, [], controllers.renderAdminPage);
 };
 
 plugin.filterConfigGet = async function (config) {
