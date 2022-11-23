@@ -1,8 +1,8 @@
 'use strict';
 
-/* globals $, app, define */
+/* globals $, define */
 
-define('admin/plugins/google-analytics', ['settings'], function (settings) {
+define('admin/plugins/google-analytics', ['settings', 'alerts'], function (settings, alerts) {
 	const PLUGIN_HASH = 'google-analytics';
 	const ACP = {};
 	let $ga4Con;
@@ -25,7 +25,7 @@ define('admin/plugins/google-analytics', ['settings'], function (settings) {
 
 	function saveSettings() {
 		settings.save(PLUGIN_HASH, $(`.${PLUGIN_HASH}-settings`), function () {
-			app.alert({
+			alerts.alert({
 				type: 'success',
 				alert_id: 'link-mentions-saved',
 				title: 'Settings Saved',
