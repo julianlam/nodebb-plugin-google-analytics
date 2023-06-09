@@ -2,7 +2,7 @@
 
 /* globals $, define */
 
-define('admin/plugins/google-analytics', ['settings', 'alerts'], function (settings, alerts) {
+define('admin/plugins/google-analytics', ['settings'], function (settings) {
 	const PLUGIN_HASH = 'google-analytics';
 	const ACP = {};
 	let $ga4Con;
@@ -24,14 +24,7 @@ define('admin/plugins/google-analytics', ['settings', 'alerts'], function (setti
 	};
 
 	function saveSettings() {
-		settings.save(PLUGIN_HASH, $(`.${PLUGIN_HASH}-settings`), function () {
-			alerts.alert({
-				type: 'success',
-				alert_id: 'link-mentions-saved',
-				title: 'Settings Saved',
-				timeout: 3000,
-			});
-		});
+		settings.save(PLUGIN_HASH, $(`.${PLUGIN_HASH}-settings`));
 	}
 
 	function toggleUA() {
