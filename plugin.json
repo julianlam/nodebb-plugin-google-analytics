@@ -8,9 +8,6 @@
         { "hook": "filter:admin.header.build", "method": "addAdminNavigation" },
         { "hook": "filter:admin.notices", "method": "getNotices"}
     ],
-    "staticDirs": {
-        "static": "./static"
-    },
     "scripts": [
         "static/lib/client.js"
     ],
