@@ -17,29 +17,28 @@
 
 			<form role="form" class="google-analytics-settings">
 				<div class="mb-3">
-					<div class="checkbox">
-						<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
-							<input class="mdl-switch__input" type="checkbox" name="useUA" id="useUA" disabled{{{ if useUA }}} checked{{{ end }}}>
-							<span class="mdl-switch__label"><strong>Use Universal Analytics</strong></span>
-						</label>
+					<div class="form-check form-switch">
+						<input class="form-check-input" type="checkbox" name="useUA" id="useUA" disabled{{{ if useUA }}} checked{{{ end }}}>
+						<label class="form-check-label">Use Universal Analytics</label>
 					</div>
 				</div>
 
 				<fieldset id="ga4-con"{{{ if useUA }}} style="display: none;"{{{ end }}}>
 					<div class="mb-3">
-						<label for="ga4id">Tracking ID (Google Analytics 4)</label>
+						<label class="form-label" for="ga4id">Tracking ID (Google Analytics 4)</label>
 						<input type="text" class="form-control" id="ga4id" name="ga4id" placeholder="G-XXXXXXXXXX">
 					</div>
 				</fieldset>
 
 				<fieldset id="ua-con"{{{ if !useUA }}} style="display: none;"{{{ end }}}>
 					<div class="mb-3">
-						<label for="id">Tracking ID (Universal Analytics)</label>
+						<label class="form-label" for="id">Tracking ID (Universal Analytics)</label>
 						<input type="text" class="form-control" id="id" name="id" placeholder="UA-XXXXXXXX-X">
 					</div>
-					<div class="checkbox">
-						<label for="displayFeatures">
-							<input type="checkbox" name="displayFeatures" id="displayFeatures"> Enable Display Advertising Features (<a href="https://support.google.com/analytics/answer/3450482?hl=en">More Information</a>)
+					<div class="form-check form-switch">
+						<input class="form-check-input" type="checkbox" name="displayFeatures" id="displayFeatures">
+						<label class="form-check-label" for="displayFeatures">
+							Enable Display Advertising Features (<a href="https://support.google.com/analytics/answer/3450482?hl=en">More Information</a>)
 						</label>
 					</div>
 				</fieldset>
