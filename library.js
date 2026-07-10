@@ -1,6 +1,6 @@
 'use strict';
 
-const meta = require.main.require('./src/meta');
+const meta = nodebb.require('./src/meta');
 
 const controllers = require('./lib/controllers');
 
@@ -11,7 +11,7 @@ const plugin = {
 
 plugin.init = async function(params) {
 	const { router } = params;
-	const routeHelpers = require.main.require('./src/routes/helpers');
+	const routeHelpers = nodebb.require('./src/routes/helpers');
 
 	routeHelpers.setupAdminPageRoute(router, `/admin/plugins/${PLUGIN_NAME}`, controllers.renderAdminPage);
 };
